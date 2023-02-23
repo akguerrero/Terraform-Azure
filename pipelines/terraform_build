@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Git checkout'){
             steps{
-                git branch: 'main', credentialsId: '3b0d889b-40b6-463e-9672-deba0d57975d', url: 'https://github.com/akguerrero/Terraform-Azure.git'
+                git branch: 'main', credentialsId: 'a4176601-503a-4db9-8610-784f50fd308d', url: 'https://github.com/akguerrero/Terraform-Azure.git'
             }
         }
         stage('Terraform Init'){
