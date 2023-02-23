@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    environment{
+        ARM = credentials('9eadcf4f-b009-450e-9e29-a6fb31e2fcf2')
+    }
+    stages{
+        stage('Git checkout'){
+            steps{
+                git branch: 'main', credentialsId: '3b0d889b-40b6-463e-9672-deba0d57975d', url: 'https://github.com/akguerrero/Terraform-Azure.git'
+            }
+        }
+        stage('Terraform Init'){
+            steps{
+                bat 'terraform init'
+            }
+        }
+        stage('Terraform Apply'){
+            steps{
+                bat 'terraform apply -auto-approve'
+            }
+        }
+    }
+}
