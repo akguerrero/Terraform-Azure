@@ -6,17 +6,20 @@ pipeline{
     stages{
         stage('Git checkout'){
             steps{
+                CleanWs()
                 git branch: 'main', credentialsId: 'a4176601-503a-4db9-8610-784f50fd308d', url: 'https://github.com/akguerrero/Terraform-Azure'
             }
         }
         stage('Terraform init'){
             steps{
+                echo "******************** Initializing Terraform ********************"
                 bat 'terraform init'
             }
         }
         stage('Terraform apply'){
             steps{
                 bat 'terraform apply -auto-approve'
+                CleanWs()
             }
         }
         
